@@ -1,18 +1,20 @@
-<![CDATA[<div align="center">
-
 # 📊 Portfolio VaR Simulation & Backtesting
 
-**A quantitative risk management framework for estimating and validating portfolio downside risk**
+<p align="center">
+  <strong>A quantitative risk management framework for estimating and validating portfolio downside risk</strong>
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
-[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org)
-[![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white)](https://scipy.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+<p align="center">
+  <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://numpy.org"><img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"></a>
+  <a href="https://pandas.pydata.org"><img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"></a>
+  <a href="https://scipy.org"><img src="https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white" alt="SciPy"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"></a>
+</p>
 
-*Estimates Value-at-Risk using Historical, Parametric, and Monte Carlo methods for a diversified NIFTY sector ETF portfolio, with statistical backtesting via Kupiec's Proportion of Failures test.*
-
-</div>
+<p align="center">
+  <em>Estimates Value-at-Risk using Historical, Parametric, and Monte Carlo methods for a diversified NIFTY sector ETF portfolio, with statistical backtesting via Kupiec's Proportion of Failures test.</em>
+</p>
 
 ---
 
@@ -27,7 +29,7 @@ The framework computes VaR using three independent methods, then rigorously back
 ### Key Results
 
 | Metric | 95% Confidence | 99% Confidence |
-|--------|:--------------:|:--------------:|
+|:-------|:--------------:|:--------------:|
 | **Historical VaR** | ₹1,29,178 (1.29%) | ₹2,31,349 (2.31%) |
 | **Parametric VaR** | ₹1,17,779 (1.18%) | ₹1,70,760 (1.71%) |
 | **Monte Carlo VaR** | ₹1,18,630 (1.19%) | ₹1,67,952 (1.68%) |
@@ -40,11 +42,13 @@ The framework computes VaR using three independent methods, then rigorously back
 ## 📈 Visualizations
 
 ### Portfolio Allocation & Cumulative Returns
+
 <p align="center">
   <img src="output/01_portfolio_composition.png" width="95%" alt="Portfolio Composition">
 </p>
 
 ### Return Distribution with VaR Thresholds
+
 <p align="center">
   <img src="output/02_return_distribution.png" width="95%" alt="Return Distribution">
 </p>
@@ -52,16 +56,19 @@ The framework computes VaR using three independent methods, then rigorously back
 The return distribution exhibits **negative skewness (-0.728)** and **excess kurtosis (2.578)**, indicating heavier left tails than a normal distribution — a key motivation for using Historical and Monte Carlo VaR alongside the Parametric method.
 
 ### Monte Carlo Simulation (10,000 Paths)
+
 <p align="center">
   <img src="output/03_monte_carlo.png" width="95%" alt="Monte Carlo Simulation">
 </p>
 
 ### VaR Comparison Across Methods
+
 <p align="center">
   <img src="output/04_var_comparison.png" width="95%" alt="VaR Comparison">
 </p>
 
 ### Backtesting — Rolling VaR with Exceedances
+
 <p align="center">
   <img src="output/05_backtest_results.png" width="95%" alt="Backtesting Results">
 </p>
@@ -69,11 +76,13 @@ The return distribution exhibits **negative skewness (-0.728)** and **excess kur
 Both confidence levels pass the Kupiec POF test, confirming the Historical VaR model is statistically adequate for this portfolio.
 
 ### Window Length Calibration
+
 <p align="center">
   <img src="output/06_window_calibration.png" width="95%" alt="Window Calibration">
 </p>
 
 ### ETF Return Correlation Matrix
+
 <p align="center">
   <img src="output/07_correlation_heatmap.png" width="95%" alt="Correlation Heatmap">
 </p>
@@ -88,40 +97,45 @@ Gold (GOLDBEES) shows near-zero correlation with equity ETFs, confirming its rol
 
 VaR estimates the maximum expected loss over a given time horizon at a specified confidence level. Three methods are implemented:
 
-#### Historical Simulation
-Uses the empirical percentile of past returns — no distributional assumptions.
+**Historical Simulation** — Uses the empirical percentile of past returns with no distributional assumptions.
 
-$$\text{VaR}_\alpha = -\text{Percentile}(R, \alpha \times 100)$$
+```
+VaR_α = -Percentile(R, α × 100)
+```
 
-#### Parametric (Variance-Covariance)
-Assumes normally distributed returns:
+**Parametric (Variance-Covariance)** — Assumes normally distributed returns:
 
-$$\text{VaR}_\alpha = -(\mu + z_\alpha \cdot \sigma)$$
+```
+VaR_α = -(μ + z_α × σ)
+```
 
-where $z_\alpha$ is the standard normal quantile at significance level $\alpha$.
+where `z_α` is the standard normal quantile at significance level `α`.
 
-#### Monte Carlo Simulation
-Generates 10,000 correlated random return paths using **Cholesky decomposition** of the covariance matrix:
+**Monte Carlo Simulation** — Generates 10,000 correlated random return paths using **Cholesky decomposition** of the covariance matrix:
 
-$$\mathbf{R}_{\text{sim}} = \mathbf{Z} \cdot \mathbf{L}^T + \boldsymbol{\mu}$$
+```
+R_sim = Z × L^T + μ
+```
 
-where $\mathbf{L}$ is the lower-triangular Cholesky factor of the covariance matrix $\Sigma = \mathbf{L}\mathbf{L}^T$, and $\mathbf{Z} \sim \mathcal{N}(0, I)$.
+where `L` is the lower-triangular Cholesky factor of the covariance matrix `Σ = L × L^T`, and `Z ~ N(0, I)`.
 
 ### 2. Backtesting — Kupiec's POF Test
 
 The Proportion of Failures (POF) test evaluates whether the number of VaR exceedances is statistically consistent with the chosen confidence level.
 
 **Hypotheses:**
-- $H_0$: Observed failure rate = Expected failure rate $(1 - \text{CL})$
-- $H_1$: Observed failure rate $\neq$ Expected failure rate
+- **H₀**: Observed failure rate = Expected failure rate (1 - CL)
+- **H₁**: Observed failure rate ≠ Expected failure rate
 
 **Likelihood Ratio Statistic:**
 
-$$LR_{POF} = -2 \ln\left[\frac{(1-p)^{T-x} \cdot p^x}{(1-\hat{p})^{T-x} \cdot \hat{p}^x}\right]$$
+```
+LR_POF = -2 × ln[(1-p)^(T-x) × p^x / (1-p̂)^(T-x) × p̂^x]
+```
 
-where $p = 1 - \text{CL}$ (expected), $\hat{p} = x/T$ (observed), $x$ = failures, $T$ = total observations.
+where `p = 1 - CL` (expected), `p̂ = x/T` (observed), `x` = failures, `T` = total observations.
 
-Under $H_0$, $LR_{POF} \sim \chi^2(1)$. Reject $H_0$ if p-value < 0.05.
+Under H₀, `LR_POF ~ χ²(1)`. Reject H₀ if p-value < 0.05.
 
 ### 3. Window Calibration
 
@@ -172,6 +186,7 @@ Portfolio-VaR-Simulation-and-Backtesting/
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.9+
 - Internet connection (for fetching market data)
 
@@ -179,7 +194,7 @@ Portfolio-VaR-Simulation-and-Backtesting/
 
 ```bash
 # Clone the repository
-git clone https://github.com/shreyansh-jain/Portfolio-VaR-Simulation-Backtesting.git
+git clone https://github.com/SJ-1302/Portfolio-VaR-Simulation-Backtesting.git
 cd Portfolio-VaR-Simulation-Backtesting
 
 # Create virtual environment (recommended)
@@ -255,11 +270,8 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ---
 
-<div align="center">
-
-**Built with ❤️ for quantitative finance**
-
-*If you found this useful, consider giving it a ⭐*
-
-</div>
-]]>
+<p align="center">
+  <strong>Built with ❤️ for quantitative finance</strong>
+  <br>
+  <em>If you found this useful, consider giving it a ⭐</em>
+</p>
