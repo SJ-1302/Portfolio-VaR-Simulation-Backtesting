@@ -266,8 +266,4 @@ PORTFOLIO_VALUE = 10_000_000  # ₹1 Crore
 
 
 
-<p align="center">
-  <strong>Built with ❤️ for quantitative finance</strong>
-  <br>
-  <em>If you found this useful, consider giving it a ⭐</em>
-</p>
+
