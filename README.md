@@ -1,4 +1,4 @@
-# 📊 Portfolio VaR Simulation & Backtesting
+# Portfolio VaR Simulation & Backtesting
 
 <p align="center">
   <strong>A quantitative risk management framework for estimating and validating portfolio downside risk</strong>
@@ -18,7 +18,7 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project implements a complete **VaR estimation and validation pipeline** for a diversified portfolio of 6 Indian (NIFTY) sector ETFs. It answers the core risk management question:
 
@@ -39,7 +39,7 @@ The framework computes VaR using three independent methods, then rigorously back
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 ### Portfolio Allocation & Cumulative Returns
 
@@ -91,7 +91,7 @@ Gold (GOLDBEES) shows near-zero correlation with equity ETFs, confirming its rol
 
 ---
 
-## 🧮 Methodology
+## Methodology
 
 ### 1. Value-at-Risk (VaR)
 
@@ -143,7 +143,7 @@ Tests multiple lookback windows (60, 120, 250, 500 trading days) to determine wh
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Portfolio-VaR-Simulation-and-Backtesting/
@@ -170,7 +170,7 @@ Portfolio-VaR-Simulation-and-Backtesting/
 
 ---
 
-## 📊 Portfolio Composition
+## Portfolio Composition
 
 | ETF Ticker | Sector | Weight | Role |
 |:----------:|:------:|:------:|:----:|
@@ -183,7 +183,7 @@ Portfolio-VaR-Simulation-and-Backtesting/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -213,11 +213,11 @@ python main.py
 ```
 
 The script will:
-1. 📥 Download historical price data for all 6 NIFTY sector ETFs
-2. 📊 Compute VaR using Historical, Parametric, and Monte Carlo methods
-3. 🧪 Backtest VaR forecasts using Kupiec's POF Test
-4. 🔧 Calibrate lookback window lengths
-5. 🎨 Generate 7 publication-quality visualizations in `output/`
+1.  Download historical price data for all 6 NIFTY sector ETFs
+2.  Compute VaR using Historical, Parametric, and Monte Carlo methods
+3.  Backtest VaR forecasts using Kupiec's POF Test
+4.  Calibrate lookback window lengths
+5.  Generate 7 publication-quality visualizations in `output/`
 
 ---
 
@@ -243,7 +243,7 @@ PORTFOLIO_VALUE = 10_000_000  # ₹1 Crore
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Library | Version | Purpose |
 |:-------:|:-------:|:-------:|
@@ -256,7 +256,7 @@ PORTFOLIO_VALUE = 10_000_000  # ₹1 Crore
 
 ---
 
-## 📚 References
+## References
 
 - Jorion, P. (2006). *Value at Risk: The New Benchmark for Managing Financial Risk*. McGraw-Hill.
 - Kupiec, P. (1995). *Techniques for Verifying the Accuracy of Risk Measurement Models*. Journal of Derivatives.
@@ -264,11 +264,7 @@ PORTFOLIO_VALUE = 10_000_000  # ₹1 Crore
 
 ---
 
-## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
 
 <p align="center">
   <strong>Built with ❤️ for quantitative finance</strong>
